@@ -14,7 +14,7 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
     req.body.id = nanoid(10);
     const note = req.body;
-    const notesArray = [notes]
+    const notesArray = notes
     notesArray.push(note);
     console.log(note);
     console.log(notes);
@@ -24,6 +24,10 @@ router.post('/notes', (req, res) => {
     );
     res.json(note)
 });
+
+router.delete('/notes', (req, res) => {
+
+})
 
 
 module.exports = router;
