@@ -32,7 +32,7 @@ The app is initialized via the User Interface in a web browser
 
 The application can be found at [note faker github](https://github.com/edellenator/note-faker)
 
-and live at [note faker heroku](https://git.heroku.com/note-faker.git)
+and live at [note faker heroku](https://note-faker.herokuapp.com/)
 
 >![](./public/assets/images/NoteTaker.gif)
 
