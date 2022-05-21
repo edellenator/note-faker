@@ -16,8 +16,6 @@ router.post('/notes', (req, res) => {
     const note = req.body;
     const notesArray = notes
     notesArray.push(note);
-    console.log(note);
-    console.log(notes);
     fs.writeFileSync(
       path.join(__dirname, '../../db/notesdb.json'),
       JSON.stringify({ notes: notesArray }, null, 2)
@@ -25,8 +23,25 @@ router.post('/notes', (req, res) => {
     res.json(note)
 });
 
-router.delete('/notes', (req, res) => {
-
+router.delete('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    let notesArray = notes;
+    console.log(notesArray);
+    var idIndex = notesArray.findIndex(function(item){
+        return item.id === id
+    });
+    const removedNotesArr = notesArray.splice(idIndex, 1);
+    console.log(notesArray);
+    console.log(removedNotesArr);
+    fs.writeFileSync(
+        path.join(__dirname, '../../db/notesdb.json'),
+        JSON.stringify({ notes: notesArray }, null, 2)
+    );
+    res.json({
+        message: 'deleted',
+        changes: removedNotesArr,
+        id: id
+      });
 })
 
 
